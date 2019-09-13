@@ -26,29 +26,19 @@ Or simply [download a zip](https://github.com/cucumber/cucumber-java-skeleton/ar
 
 Open a command window and run:
 
-    mvn test
+    ./mvnw test
 
-This runs Cucumber features using Cucumber's JUnit runner. The `@RunWith(Cucumber.class)` annotation on the `RunCukesTest`
-class tells JUnit to kick off Cucumber.
-
-## Use Ant
-
-Open a command window and run:
-
-    ant download
-    ant runcukes
-
-This runs Cucumber features using Cucumber's Command Line Interface (CLI) runner. Note that the `RunCukesTest` junit class is not used at all.
-If you remove it (and the `cucumber-junit` jar dependency), it will run just the same.
+This runs Cucumber features using Cucumber's JUnit runner. The `@RunWith(Cucumber.class)` annotation on the 
+`RunCucumberTest` class tells JUnit to kick off Cucumber.
 
 ## Use Gradle
 
 Open a command window and run:
 
-    gradlew test
+     ./gradlew test --rerun-tasks --info
 
-This runs Cucumber features using Cucumber's JUnit runner. The `@RunWith(Cucumber.class)` annotation on the `RunCukesTest`
-class tells JUnit to kick off Cucumber.
+This runs Cucumber features using Cucumber's JUnit runner. The `@RunWith(Cucumber.class)` annotation on the
+`RunCucumberTest` class tells JUnit to kick off Cucumber.
 
 ## Overriding options
 
@@ -61,10 +51,6 @@ Sometimes it can be useful to override these options without changing or recompi
 Using Maven:
 
     mvn -Dcucumber.options="..." test
-
-Using Ant:
-
-    JAVA_OPTIONS='-Dcucumber.options="..."' ant runcukes
 
 Using Gradle:
 
@@ -81,7 +67,7 @@ That should list all the available options.
 When you override options with `-Dcucumber.options`, you will completely override whatever options are hard-coded in
 your `@CucumberOptions` or in the script calling `cucumber.api.cli.Main`. There is one exception to this rule, and that
 is the `--plugin` option. This will not _override_, but _add_ a plugin. The reason for this is to make it easier
-for 3rd party tools (such as [Cucumber Pro](https://cucumber.pro/)) to automatically configure additional plugins by appending arguments to a `cucumber.properties`
+for 3rd party tools to automatically configure additional plugins by appending arguments to a `cucumber.properties`
 file.
 
 ### Run a subset of Features or Scenarios
